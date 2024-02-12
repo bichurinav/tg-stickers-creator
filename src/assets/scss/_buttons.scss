@@ -1,0 +1,73 @@
+$widthTool: 36px;
+
+.button {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.2s;
+  i {
+    color: #fff;
+  }
+
+  &--tool {
+    position: relative;
+    width: $widthTool;
+    height: $widthTool;
+    background: rgb(0, 0, 0);
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(218, 218, 218);
+
+    & > input[type="file"] {
+      position: absolute;
+      cursor: pointer;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+
+    i {
+      color: inherit;
+      font-size: 24px;
+    }
+
+    &:hover {
+      background: rgb(26, 26, 26);
+      .tooltip--tool {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &:active {
+      i {
+        transition: 0.1s;
+        transform: scale(0.65);
+      }
+    }
+  }
+
+  &--font,
+  &--square,
+  &--swap {
+    visibility: hidden;
+    color: lighten($primary, 25);
+  }
+
+  &.enable {
+    visibility: visible;
+  }
+
+  &--active {
+    &:hover {
+      color: $primary;
+      background: #fff;
+    }
+    color: $primary;
+    background: #fff;
+  }
+}

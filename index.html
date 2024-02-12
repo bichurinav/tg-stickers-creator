@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="./dist/nice-select2.css" />
+    <link rel="stylesheet" href="./dist/huebee.min.css" />
+    <link rel="stylesheet" href="./dist/index.css" />
+    <title>TG Sticker Creator</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header page__header">HEADER</header>
+      <main class="content page__content">
+        <div class="creator">
+          <div class="creator__inner">
+            <h1 class="creator__title">Telegram Stickers Creator v0.1</h1>
+            <h2>TODO: box-shadow, opacity, filters img</h2>
+            <div class="creator-canvas">
+              <canvas id="canvas" width="512" height="512"></canvas>
+              <!-- PANEL TOOLS -->
+              <div id="panel-tools" class="panel-tools">
+                <label id="image-upload-2" class="button button--tool">
+                  <i class="material-icons">image</i>
+                  <input
+                    id="image-upload-2"
+                    type="file"
+                    class="image-upload-file"
+                    accept=".png, .jpg, .jpeg"
+                  />
+                  <div class="tooltip tooltip--tool">Добавляет изображение</div>
+                </label>
+                <button id="add-text" class="button button--tool">
+                  <i class="material-icons">title</i>
+                  <div class="tooltip tooltip--tool">Добавляет новый текст</div>
+                </button>
+                <button id="add-rect" class="button button--tool">
+                  <i class="material-icons">square</i>
+                  <div class="tooltip tooltip--tool">Добавляет квадрат</div>
+                </button>
+                <button id="add-circle" class="button button--tool">
+                  <i class="material-icons">circle</i>
+                  <div class="tooltip tooltip--tool">Добавляет круг</div>
+                </button>
+                <button id="up-object" class="button button--tool button--swap">
+                  <i class="material-icons">swipe_up</i>
+                  <div class="tooltip tooltip--tool">Ставит объект вперед</div>
+                </button>
+                <button
+                  id="down-object"
+                  class="button button--tool button--swap"
+                >
+                  <i class="material-icons">swipe_down</i>
+                  <div class="tooltip tooltip--tool">Ставит объект назад</div>
+                </button>
+                <!-- <button class="button button--tool button--font">
+                  <i class="material-icons">circle</i>
+                  <div class="tooltip tooltip--tool">
+                    Делает изображение круглым
+                  </div>
+                </button>
+                <button class="button button--tool button--font">
+                  <i class="material-icons">crop_square</i>
+                  <div class="tooltip tooltip--tool">
+                    Делает изображение квадратным
+                  </div>
+                </button> -->
+                <button
+                  id="color-tool"
+                  class="button button--tool button--font button--figure"
+                >
+                  <i class="material-icons">palette</i>
+                  <div class="tooltip tooltip--tool">Меняет цвет</div>
+                  <div class="dropdown dropdown--tool">
+                    <div>
+                      <input
+                        id="color-input"
+                        class="color-input"
+                        value="#FFF"
+                      />
+                    </div>
+                  </div>
+                </button>
+                <button id="font-tool" class="button button--tool button--font">
+                  <i class="material-icons">history_edu</i>
+                  <div class="tooltip tooltip--tool">Меняет шрифт</div>
+                  <div class="dropdown dropdown--tool dropdown--tool-font">
+                    <label class="title-panel">
+                      <h3 class="title-panel__title">Шрифт</h3>
+                      <select id="font-select">
+                        <option selected value="Roboto">Roboto</option>
+                        <option value="Ubuntu">Ubuntu</option>
+                        <option value="FiraSans">FiraSans</option>
+                        <option value="Play">Play</option>
+                        <option value="RubikDoodle">Rubik Doodle</option>
+                        <option value="PressStart2P">PressStart2P</option>
+                      </select>
+                    </label>
+                    <!-- IF STYLE STROKE -->
+                    <div id="is-stroke-panel">
+                      <label class="title-panel">
+                        <h3 class="title-panel__title">Ширина обводки</h3>
+                        <select id="width-stroke-select">
+                          <option selected value="0">0px</option>
+                          <option value="1">1px</option>
+                          <option value="2">2px</option>
+                          <option value="3">3px</option>
+                        </select>
+                      </label>
+                      <label class="title-panel">
+                        <h3 class="title-panel__title">Цвет обводки</h3>
+                        <input
+                          id="color-stroke-input"
+                          class="color-input"
+                          value="#000"
+                        />
+                      </label>
+                    </div>
+                  </div>
+                </button>
+                <button
+                  id="font-bold-tool"
+                  class="button button--tool button--font"
+                >
+                  <i class="material-icons">format_bold</i>
+                  <div class="tooltip tooltip--tool">Делает текст жирным</div>
+                </button>
+                <button
+                  id="font-italic-tool"
+                  class="button button--tool button--font"
+                >
+                  <i class="material-icons">format_italic</i>
+                  <div class="tooltip tooltip--tool">
+                    Делает текст курсивным
+                  </div>
+                </button>
+                <button
+                  id="font-underline-tool"
+                  class="button button--tool button--font"
+                >
+                  <i class="material-icons">format_underlined</i>
+                  <div class="tooltip tooltip--tool">
+                    Делает текст подчеркнутым
+                  </div>
+                </button>
+                <button
+                  id="font-through-tool"
+                  class="button button--tool button--font"
+                >
+                  <i class="material-icons">format_strikethrough</i>
+                  <div class="tooltip tooltip--tool">
+                    Делает текст зачеркнутым
+                  </div>
+                </button>
+              </div>
+              <!-- ./PANEL TOOLS -->
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="footer page__footer">FOOTER</footer>
+    </div>
+    <script src="./dist/libs/fontfaceobserver.js"></script>
+    <script src="./dist/libs/nice-select2.js"></script>
+    <script src="./dist/libs/huebee.pkgd.min.js"></script>
+    <script src="./dist/libs/fabric.min.js"></script>
+    <script src="./dist/main.js"></script>
+  </body>
+</html>

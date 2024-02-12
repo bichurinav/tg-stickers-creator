@@ -1,0 +1,25 @@
+.creator {
+  &__title {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &-canvas {
+    position: relative;
+    canvas {
+      border: 1px solid #ffffff6c;
+      box-shadow: 0 0px 16px black;
+    }
+
+    &__upload {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
+  &-panel {
+    margin-top: 20px;
+  }
+}

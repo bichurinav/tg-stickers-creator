@@ -1,0 +1,31 @@
+.nice-select.open .nice-select-dropdown {
+  width: 100%;
+}
+
+.dropdown {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  padding: 12px;
+  transition: all 0.2s;
+  border-radius: 6px;
+  cursor: initial;
+  z-index: 2;
+
+  &--tool {
+    right: 0;
+    background: #fff;
+    right: calc($widthTool + 10px);
+    flex-direction: column;
+
+    .nice-select {
+      color: $primary;
+    }
+  }
+
+  &--active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
